@@ -29,7 +29,7 @@ export default (opts) => {
   // 10.1.2b
   const regexVersion = /.*(\d+)\.(\d)+\.(\d).*/;
   const regexVarVersion = /\{\{ *version *\}\}/i;
-  const regexVarCommit = /\{\{ *version *\}\}/i;
+  const regexVarCommit = /\{\{ *commit *\}\}/i;
   const commit = options.commit || gitRevSync.short();
   const tag = options.tag || gitRevSync.tag();
   const resultVersion = regexVersion.exec(tag);
@@ -37,16 +37,16 @@ export default (opts) => {
 
   // if git tag does not have a version number read in from package.json
   if (resultVersion) {
-    const major = resultVersion[2];
-    const minor = resultVersion[3];
-    const patch = resultVersion[4];
+    const major = resultVersion[1];
+    const minor = resultVersion[2];
+    const patch = resultVersion[3];
 
     version = `${major}.${minor}.${patch}`;
   } else {
     version = getPackageJSON(options).version;
   }
 
-  let out = opts.template.replace(regexVarVersion, version);
+  let out = options.template.replace(regexVarVersion, version);
   out = out.replace(regexVarCommit, commit);
 
   return out;

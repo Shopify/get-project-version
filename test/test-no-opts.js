@@ -11,9 +11,9 @@ export default () => {
     const commit = gitRevSync.short();
     const regexVersion = /.*(\d+)\.(\d)+\.(\d).*/;
     const resultVersion = regexVersion.exec(tag);
-    const major = resultVersion[2];
-    const minor = resultVersion[3];
-    const patch = resultVersion[4];
+    const major = resultVersion[1];
+    const minor = resultVersion[2];
+    const patch = resultVersion[3];
     const version = `${major}.${minor}.${patch}`;
 
     const expected = `Version: ${version} Commit: ${commit}`;
