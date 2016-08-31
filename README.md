@@ -6,10 +6,15 @@ This module will return the current project version string. The version string i
 
 - [Installation](#installation)
 - [Examples](#examples)
+  + [Basic Usage](#example-basic-usage)
+  + [Using Template](#example-using-template)
+  + [Using CWD](#example-using-cwd)
 - [API](#api)
-    + [`const instance = getProjectVersion([options])`](#const-instance-getprojectversion-options)
-    + [`someFunction(variable, callback)`](#somefunction-variable-callback)
-    + [`anotherFunction()`](#anotherfunction)
+  + [`const instance = getProjectVersion([options])`](#const-instance-getprojectversion-options)
+- [CLI](#cli)
+  + [`Basic Usage`](#cli-example-basic)
+  + [`Using Template`](#cli-example-template)
+  + [`Using CWD`](#cli-example-cwd)
 - [License](http://github.com/Shopify/get-project-version/blob/master/LICENSE.md)
 
 ## Installation
@@ -19,50 +24,80 @@ $ npm install get-project-version
 
 ## Examples
 
-#### Example 1
+#### Example - Basic Usage
 
-Decribe Example 1. Stumptown selfies put a bird on it occupy, scenester ramps jean shorts next level kale chips seitan:
+The following is a basic example:
 
 ```javascript
 import getProjectVersion from 'get-project-version';
 
-/********************************/
-/********************************/
-/* -- PUT AN EXAMPLE IN HERE -- */
-/********************************/
-/********************************/
+const version = getProjectVersion();
+
+console.log(version); // Version: 1.0.0 Commit: 081b152
 ```
 
-#### Example 2
+#### Example - Using Template
 
-Decribe Example 1. Stumptown selfies put a bird on it occupy, scenester ramps jean shorts next level kale chips seitan:
+This example shows how you can customize the output of `get-project-version` using a template string:
 
 ```javascript
 import getProjectVersion from 'get-project-version';
 
-/********************************/
-/********************************/
-/* -- PUT AN EXAMPLE IN HERE -- */
-/********************************/
-/********************************/
+const version = getProjectVersion({
+  template: '{{version}}-{{commit}}'
+});
+
+console.log(version); // 1.0.0-081b152
+```
+
+#### Example - Using CWD
+
+There are cases where you'd like to output a version string for a particular folder this can be done like this:
+
+```javascript
+import getProjectVersion from 'get-project-version';
+
+const version = getProjectVersion({
+  cwd: 'pathToProjectDir/'
+});
+
+console.log(version); // 1.0.0-081b152
 ```
 
 ## API
 
-#### `const instance = getProjectVersion([options]);`
+#### `const version = getProjectVersion([options]);`
 
 Options you can pass `getProjectVersion`:
-- `option1` - Replace with a description of option 1
-- `option2` - Replace with a description of option 2
-- `option3` - Replace with a description of option 2
+- `template` - An optional String which templates the output of `getProjectVersion`. Version will be injected into `{{version}}` and a shortened commit hash will be injected into `{{commit}}`. eg. `'{{version}}-{{commit}}'`
+- `cwd` - An optional String. By default the current working directory will be `process.cwd()` you can modify this by passing a path. eg. `'pathToProjectDir/'`
 
-#### `instance.someFunction(variable, callback);`
+## CLI
 
-Replace with `someFunction` description. Hoodie post-ironic polaroid salvia, microdosing vice ethical etsy bushwick roof party swag. Farm-to-table humblebrag etsy neutra synth.
+#### CLI Example - Basic
 
-#### `instance.anotherFunction();`
+```bash
+$ get-project-version
+```
 
-Replace with `anotherFunction` description. Tacos polaroid cronut trust fund mumblecore biodiesel viral hella helvetica actually organic. Stumptown selfies put a bird on it occupy, scenester ramps jean shorts next level kale chips seitan.
+The above would output to stdout something like `Version: 1.0.0 Commit: 081b152`
+
+#### CLI Example - Template
+
+```bash
+$ get-project-version --template '{{version}}-{{commit}}'
+```
+
+The above would output to stdout something like `1.0.0-081b152`
+
+#### CLI Example - CWD
+
+```bash
+$ get-project-version --cwd pathToProjectDir/
+```
+
+The above would output a version string for `pathToProjectDir/`
+
 
 ## License
 
