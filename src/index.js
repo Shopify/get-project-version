@@ -30,8 +30,8 @@ export default (opts) => {
   const regexVersion = /.*(\d+)\.(\d)+\.(\d).*/;
   const regexVarVersion = /\{\{ *version *\}\}/i;
   const regexVarCommit = /\{\{ *commit *\}\}/i;
-  const commit = options.commit || gitRevSync.short();
-  const tag = options.tag || gitRevSync.tag();
+  const commit = options.commit || gitRevSync.short(options.cwd);
+  const tag = options.tag || gitRevSync.tag(options.cwd);
   const resultVersion = regexVersion.exec(tag);
   let version;
 
