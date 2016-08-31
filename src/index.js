@@ -46,8 +46,6 @@ export default (opts) => {
     version = getPackageJSON(options).version;
   }
 
-  let out = options.template.replace(regexVarVersion, version);
-  out = out.replace(regexVarCommit, commit);
-
-  return out;
+  return options.template.replace(regexVarVersion, version)
+    .replace(regexVarCommit, commit);
 };
