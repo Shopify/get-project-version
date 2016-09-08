@@ -3,8 +3,6 @@ import assert from 'assert';
 import fs from 'fs';
 import path from 'path';
 
-import getProjectVersion from '../src/';
-
 export default () => {
   test('we should get the git tag version and git commit', () => {
     const projectVersion = fs.readFileSync(path.join(__dirname, 'out-version'), 'utf8');

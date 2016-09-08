@@ -8,7 +8,7 @@ import getProjectVersion from '../src/';
 export default () => {
   test('we should get version from package.json if tag is not a version numbers', () => {
     const projectVersion = getProjectVersion({
-      tag: 'this will cause tag to not be a proper version number and read from package.json instead'
+      tag: 'this will cause tag to not be a proper version number and read from package.json instead',
     });
 
     const version = JSON.parse(fs.readFileSync(path.resolve(__dirname, '..', 'package.json'), 'utf8')).version;

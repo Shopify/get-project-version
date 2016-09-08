@@ -30,10 +30,19 @@ export default (opts) => {
   const regexVersion = /.*(\d+)\.(\d)+\.(\d).*/;
   const regexVarVersion = /\{\{ *version *\}\}/i;
   const regexVarCommit = /\{\{ *commit *\}\}/i;
-  const commit = options.commit || gitRevSync.short(options.cwd);
-  const tag = options.tag || gitRevSync.tag(options.cwd);
-  const resultVersion = regexVersion.exec(tag);
+
+  let commit;
+  let tag;
+  let resultVersion;
   let version;
+
+  try {
+    commit = options.commit || gitRevSync.short(options.cwd);
+    tag = options.tag || gitRevSync.tag(options.cwd);
+    resultVersion = regexVersion.exec(tag);
+  } catch (error) {
+    commit = 'no commit';
+  }
 
   // if git tag does not have a version number read in from package.json
   if (resultVersion) {
