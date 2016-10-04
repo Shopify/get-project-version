@@ -9,7 +9,7 @@
   "license": "MIT",
   "author": "Shopify Inc.",
   "dependencies": {
-    "git-rev-sync": "^1.6.0",
+    "git-rev-sync": "github:mikkoh/git-rev-sync#2d25f1d",
     "minimist": "^1.2.0"
   },
   "devDependencies": {
