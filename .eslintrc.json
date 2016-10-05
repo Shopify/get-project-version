@@ -1,7 +1,7 @@
 {
   "extends": [
-    "plugin:shopify/esnext",
-    "plugin:shopify/node",
-    "plugin:shopify/mocha"
+    "./node_modules/eslint-plugin-shopify/lib/config/esnext.js",
+    "./node_modules/eslint-plugin-shopify/lib/config/node.js",
+    "./node_modules/eslint-plugin-shopify/lib/config/mocha.js"
   ]
 }
