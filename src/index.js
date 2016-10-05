@@ -16,7 +16,7 @@ export default (opts) => {
       cwd: process.cwd(),
       template: 'Version: {{version}} Commit: {{commit}}',
     },
-    opts
+    opts,
   );
 
   // Because commit and tag numbers will change for this module for testing purposes
