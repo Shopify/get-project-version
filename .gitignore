@@ -5,5 +5,4 @@ node_modules
 bundle.js
 test/output
 lib/
-test/out-version
-test/out-version-template
+test/out-*

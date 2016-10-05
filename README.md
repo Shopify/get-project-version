@@ -71,6 +71,7 @@ console.log(version); // 1.0.0-081b152
 Options you can pass `getProjectVersion`:
 - `template` - An optional String which templates the output of `getProjectVersion`. Version will be injected into `{{version}}` and a shortened commit hash will be injected into `{{commit}}`. eg. `'{{version}}-{{commit}}'`
 - `cwd` - An optional String. By default the current working directory will be `process.cwd()` you can modify this by passing a path. eg. `'pathToProjectDir/'`
+- `noCommit` - A String which will be used instead of a commit hash if no commit hash exists. Default `"no commit"`
 
 ## CLI
 
@@ -97,6 +98,14 @@ $ get-project-version --cwd pathToProjectDir/
 ```
 
 The above would output a version string for `pathToProjectDir/`
+
+#### CLI EXample - No Commit
+
+```bash
+$ get-project-version --noCommit "0-commits"
+```
+
+The above will use `"0-commits"` for the version string instead of the default `"no commit"` if the cwd `get-project-version` is running in is not a git repo or has no commits.
 
 
 ## License

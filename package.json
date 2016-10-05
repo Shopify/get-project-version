@@ -24,10 +24,12 @@
   },
   "scripts": {
     "test": "npm run lint-allow-warning && npm run prepublish && npm run test-cli && mocha -u tdd --compilers js:babel-register test/index.js",
-    "test-cli": "npm run test-cli-default && npm run test-cli-template",
+    "posttest": "rm test/out-version; rm test/out-version-template; rm test/out-no-commit-message",
+    "test-cli": "npm run test-cli-default && npm run test-cli-template && npm run test-cli-no-commit-message",
     "test-clean": "rm test/out-version; rm test/out-version-template",
     "test-cli-default": "node lib/cli.js > test/out-version",
     "test-cli-template": "node lib/cli.js --template '{{version}}' > test/out-version-template",
+    "test-cli-no-commit-message": "node lib/cli.js --noCommit '0-commits' --ignoreGit > test/out-no-commit-message",
     "prepublish": "babel -d lib/ src/",
     "lint": "eslint --max-warnings 0 -c .eslintrc.json src/ test/",
     "lint-allow-warning": "eslint -c .eslintrc.json src/ test/"

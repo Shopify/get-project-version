@@ -15,6 +15,7 @@ export default (opts) => {
     {
       cwd: process.cwd(),
       template: 'Version: {{version}} Commit: {{commit}}',
+      noCommit: 'no commit',
     },
     opts,
   );
@@ -37,11 +38,17 @@ export default (opts) => {
   let version;
 
   try {
-    commit = options.commit || gitRevSync.short(options.cwd);
-    tag = options.tag || gitRevSync.tag(options.cwd);
-    resultVersion = regexVersion.exec(tag);
+    // this is for testing purposes to ensure that the no commit message
+    // will be used
+    if (options.ignoreGit) {
+      commit = options.noCommit;
+    } else {
+      commit = options.commit || gitRevSync.short(options.cwd);
+      tag = options.tag || gitRevSync.tag(options.cwd);
+      resultVersion = regexVersion.exec(tag);
+    }
   } catch (error) {
-    commit = 'no commit';
+    commit = options.noCommit;
   }
 
   // if git tag does not have a version number read in from package.json
