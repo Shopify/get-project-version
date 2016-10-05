@@ -9,18 +9,18 @@
   "license": "MIT",
   "author": "Shopify Inc.",
   "dependencies": {
-    "git-rev-sync": "^1.6.0",
-    "minimist": "^1.2.0"
+    "git-rev-sync": "mikkoh/git-rev-sync#e576ceb4992b995e208b7ae0c859305dcb2a5ebf",
+    "minimist": "~1.2.0"
   },
   "devDependencies": {
-    "babel": "^6.5.2",
-    "babel-cli": "^6.11.4",
-    "babel-core": "^6.13.2",
-    "babel-preset-shopify": "^13.0.0",
-    "babel-register": "^6.11.6",
-    "eslint": "3.3.x",
-    "eslint-plugin-shopify": "^14.0.0",
-    "mocha": "^3.0.2"
+    "babel": "~6.5.2",
+    "babel-cli": "~6.11.4",
+    "babel-core": "~6.13.2",
+    "babel-preset-shopify": "~13.0.0",
+    "babel-register": "~6.11.6",
+    "eslint": "~3.3.0",
+    "eslint-plugin-shopify": "~14.0.2",
+    "mocha": "~3.0.2"
   },
   "scripts": {
     "test": "npm run lint-allow-warning && npm run prepublish && npm run test-cli && mocha -u tdd --compilers js:babel-register test/index.js",
