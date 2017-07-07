@@ -27,7 +27,7 @@ export default (opts) => {
   // 30.1.2
   // 1.1.1-alpha etc
   // 10.1.2b
-  const regexVersion = /.*(\d+)\.(\d)+\.(\d).*/;
+  const regexVersion = /.*(\d+)\.(\d+)\.(\d+).*/;
   const regexVarVersion = /\{\{ *version *\}\}/i;
   const regexVarCommit = /\{\{ *commit *\}\}/i;
 
